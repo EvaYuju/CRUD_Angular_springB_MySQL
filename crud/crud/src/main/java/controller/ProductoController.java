@@ -1,7 +1,9 @@
 package controller;
 
 import dto.Mensaje;
+import dto.ProductoDto;
 import entity.Producto;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,5 +33,18 @@ public class ProductoController {
         // Si existe creramos un producto
         Producto producto = productoService.getOne(id).get();
         return new ResponseEntity(producto, HttpStatus.OK);
+    }
+    @GetMapping("/detail/{nombre}")
+    public ResponseEntity<Producto> getByNombre(@PathVariable("nombre") String nombre){
+        if(!productoService.existsByNombre(nombre))
+            return new ResponseEntity(new Mensaje("No existe"), HttpStatus.NOT_FOUND);
+        // Si existe creramos un producto
+        Producto producto = productoService.getByNombre(nombre).get();
+        return new ResponseEntity(producto, HttpStatus.OK);
+    }
+
+    public ResponseEntity<?> create(@RequestBody ProductoDto productoDto){
+        // SpringUtils de Apache commons lang3
+        if(StringUtils.isBlank(productoDto))
     }
 }
