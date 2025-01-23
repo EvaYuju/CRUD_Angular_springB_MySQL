@@ -1,5 +1,6 @@
 package service;
 
+import dto.ProductoDto;
 import entity.Producto;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import java.util.Optional;
 @Service
 @Transactional
 public class ProductoService {
+    //ProductoDto productoDto;
     @Autowired // Cuando sea necesario que se encargue Spring de crear una instancia del Repositorio
     ProductoRepository productoRepository;
     public List<Producto> list(){

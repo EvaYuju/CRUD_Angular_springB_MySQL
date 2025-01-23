@@ -10,4 +10,5 @@ import java.util.Optional;
 public interface ProductoRepository extends JpaRepository<Producto, Integer> { // Tipo de dato y tipo de dato de la PK
     Optional<Producto> findByNombre(String nombre);
     boolean existByNombre(String nombre);
+
 }

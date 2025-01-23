@@ -61,14 +61,18 @@ public class ProductoController {
         // Comprobamos si existe primero
         if(!productoService.existsById(id))
             return new ResponseEntity(new Mensaje("No existe"), HttpStatus.NOT_FOUND);
+        if(productoService.existsByNombre(productoDto.getNombre()) && productoService.getByNombre(productoDto.getNombre()).get().getId() !=id)
+            return new ResponseEntity<>(new Mensaje("El nombre ya existe"), HttpStatus.BAD_REQUEST);
         // SpringUtils de Apache commons lang3
         if(StringUtils.isBlank(productoDto.getNombre()))
             return new ResponseEntity<>(new Mensaje("El nombre es obligatorio"), HttpStatus.BAD_REQUEST);
         if(productoDto.getPrecio()<0)
             return new ResponseEntity<>(new Mensaje("El precio debe ser mayor que 0"), HttpStatus.BAD_REQUEST);
-        if(productoService.existsByNombre(productoDto.getNombre()))
-            return new ResponseEntity<>(new Mensaje("El nombre ya existe"), HttpStatus.BAD_REQUEST);
-        Producto producto = new Producto(productoDto.getNombre(),productoDto.getPrecio());
+
+        //Producto producto = new Producto(productoDto.getNombre(),productoDto.getPrecio());
+        Producto producto = productoService.getOne(id).get();
+        producto.setNombre(productoDto.getNombre());
+        producto.setPrecio(productoDto.getPrecio());
         productoService.save(producto);
         return new ResponseEntity<>(new Mensaje("Producto creado"), HttpStatus.OK); // 200
     }
