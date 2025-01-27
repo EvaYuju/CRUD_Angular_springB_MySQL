@@ -13,24 +13,31 @@ import java.util.Optional;
 @Service
 @Transactional
 public class ProductoService {
-    //ProductoDto productoDto;
-    @Autowired // Cuando sea necesario que se encargue Spring de crear una instancia del Repositorio
+    //Inyectar el repositorio;
+    @Autowired // Cuando sea necesario se encargue Spring de crear una instancia del Repositorio
     ProductoRepository productoRepository;
+    // Métodos:
+    // Devuelve todos los registros de esa tabla:
     public List<Producto> list(){
-        return productoRepository.findAll(); // Devuelve todos los registros de esa tabla
+        return productoRepository.findAll();
     }
+    // Optional y Devuelve por el id:
     public Optional<Producto> getOne(int id){
-        return productoRepository.findById(id); // Devuelve por el id
+        return productoRepository.findById(id);
     }
+    // Devuelve por el nombre
     public Optional<Producto> getByNombre(String nombre){
-        return productoRepository.findByNombre(nombre); // Devuelve por el nombre
+        return productoRepository.findByNombre(nombre);
     }
+    // No devuelve -> para guardar
     public void save(Producto producto){
         productoRepository.save(producto);
     }
+    // Para borrar
     public void delete(int id){
         productoRepository.deleteById(id);
     }
+    // Para comprobar si existe por id o nombre:
     public boolean existsById(int id){
         return productoRepository.existsById(id);
     }
