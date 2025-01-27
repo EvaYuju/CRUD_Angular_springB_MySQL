@@ -26,13 +26,13 @@ public class ProductoController {
     @GetMapping("/lista") /* Get mapping + url ; producto/lista */
     public ResponseEntity<List<Producto>> list() {
         List<Producto> list = productoService.list();
-        return new ResponseEntity<>(list, HttpStatus.OK);
+        return new ResponseEntity<>(list, HttpStatus.OK); // 200
         // return new ResponseEntity<List<Producto>>(list, HttpStatus.OK); /* Hace lo mismo */
     }
     @GetMapping("/detail/{id}")
     public ResponseEntity<Producto> getById(@PathVariable("id") int id){
         if(!productoService.existsById(id))
-            return new ResponseEntity(new Mensaje("No existe"), HttpStatus.NOT_FOUND);
+            return new ResponseEntity(new Mensaje("No existe"), HttpStatus.NOT_FOUND); // 404
         // Si existe encuentra un id producto
         Producto producto = productoService.getOne(id).get(); /* Optional -> .get() */
         return new ResponseEntity(producto, HttpStatus.OK);
@@ -40,7 +40,7 @@ public class ProductoController {
     @GetMapping("/detail/{nombre}")
     public ResponseEntity<Producto> getByNombre(@PathVariable("nombre") String nombre){
         if(!productoService.existsByNombre(nombre))
-            return new ResponseEntity(new Mensaje("No existe"), HttpStatus.NOT_FOUND); // 404
+            return new ResponseEntity(new Mensaje("No existe"), HttpStatus.NOT_FOUND);
         // Si existe encuentra un nombre producto
         Producto producto = productoService.getByNombre(nombre).get();
         return new ResponseEntity(producto, HttpStatus.OK);
@@ -61,7 +61,7 @@ public class ProductoController {
         // Crea el producto
         Producto producto = new Producto(productoDto.getNombre(),productoDto.getPrecio());
         productoService.save(producto);
-        return new ResponseEntity<>(new Mensaje("Producto creado"), HttpStatus.OK); // 200
+        return new ResponseEntity<>(new Mensaje("Producto creado"), HttpStatus.OK);
     }
 
     // Método update
@@ -70,7 +70,7 @@ public class ProductoController {
     public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody ProductoDto productoDto){
         // Comprobamos si existe primero, etc
         if(!productoService.existsById(id))
-            return new ResponseEntity(new Mensaje("No existe"), HttpStatus.NOT_FOUND); // 404
+            return new ResponseEntity(new Mensaje("No existe"), HttpStatus.NOT_FOUND);
         // Compruebo si el producto.nombre que pongo no existe en otro producto.id con ese nombre
         if(productoService.existsByNombre(productoDto.getNombre()) && productoService.getByNombre(productoDto.getNombre()).get().getId() !=id)
             return new ResponseEntity<>(new Mensaje("El nombre ya existe"), HttpStatus.BAD_REQUEST);
@@ -83,7 +83,16 @@ public class ProductoController {
         producto.setNombre(productoDto.getNombre()); /* Asignamos nombre */
         producto.setPrecio(productoDto.getPrecio()); /* Asignamos precio */
         productoService.save(producto); /* guardamos */
-        return new ResponseEntity<>(new Mensaje("Producto creado"), HttpStatus.OK); // 200
+        return new ResponseEntity<>(new Mensaje("Producto creado"), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> delete(@PathVariable("id") int id) {
+        // Comprobamos si existe primero, etc
+        if(!productoService.existsById(id))
+            return new ResponseEntity(new Mensaje("No existe"), HttpStatus.NOT_FOUND);
+        productoService.delete(id);
+        return new ResponseEntity<>(new Mensaje("Producto borrado"), HttpStatus.OK);
     }
 
 }
