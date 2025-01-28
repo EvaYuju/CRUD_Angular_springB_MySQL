@@ -8,12 +8,20 @@ public class ProductoDto {
     @NotBlank /* Restincciones */
     private String nombre;
     @Min(0) /* Restincciones */
-    private float precio;
+    private Float precio;
 
     public ProductoDto() {
     }
-    public ProductoDto(String nombre, float precio) {
+
+    public ProductoDto(String nombre, Float precio) {
         this.nombre = nombre;
+        this.precio = precio;
+    }
+
+    public Float getPrecio() {
+        return precio;
+    }
+    public void setPrecio(Float precio) {
         this.precio = precio;
     }
     public String getNombre() {
@@ -22,10 +30,5 @@ public class ProductoDto {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    public float getPrecio() {
-        return precio;
-    }
-    public void setPrecio(float precio) {
-        this.precio = precio;
-    }
+
 }

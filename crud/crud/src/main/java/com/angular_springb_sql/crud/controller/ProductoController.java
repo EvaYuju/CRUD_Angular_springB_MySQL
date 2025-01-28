@@ -60,8 +60,7 @@ public class ProductoController {
         /* Uso SpringUtils de Apache commons lang3 */
         if(StringUtils.isBlank(productoDto.getNombre())) // isNotBlank -> que el nombre no esté en blanco
             return new ResponseEntity<>(new Mensaje("El nombre es obligatorio"), HttpStatus.BAD_REQUEST);
-        if(productoDto.getPrecio()<0)
-      /*if(productoDto.getPrecio()<0 || productoDto.getPrecio()==null)*/ //Error? //ToDo
+        if(productoDto.getPrecio() ==null || productoDto.getPrecio()<0)
             return new ResponseEntity<>(new Mensaje("El precio debe ser mayor que 0"), HttpStatus.BAD_REQUEST);
         if(productoService.existsByNombre(productoDto.getNombre()))
             return new ResponseEntity<>(new Mensaje("El nombre ya existe"), HttpStatus.BAD_REQUEST);
