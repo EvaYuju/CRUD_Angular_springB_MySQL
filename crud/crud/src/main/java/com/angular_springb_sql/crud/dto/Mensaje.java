@@ -1,4 +1,4 @@
-package dto;
+package com.angular_springb_sql.crud.dto;
 
 public class Mensaje {
     // Para mostrar mensajes por pantalla en el cliente

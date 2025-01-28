@@ -1,4 +1,4 @@
-package entity;
+package com.angular_springb_sql.crud.entity;
 
 import jakarta.persistence.*;
 

@@ -1,11 +1,10 @@
-package service;
+package com.angular_springb_sql.crud.service;
 
-import dto.ProductoDto;
-import entity.Producto;
+import com.angular_springb_sql.crud.entity.Producto;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repository.ProductoRepository;
+import com.angular_springb_sql.crud.repository.ProductoRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -42,7 +41,7 @@ public class ProductoService {
         return productoRepository.existsById(id);
     }
     public boolean existsByNombre(String nombre){
-        return productoRepository.existByNombre(nombre);
+        return productoRepository.existsByNombre(nombre);
     }
 
 

@@ -1,4 +1,4 @@
-package dto;
+package com.angular_springb_sql.crud.dto;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
