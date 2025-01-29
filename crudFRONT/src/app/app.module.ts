@@ -3,16 +3,18 @@ import { CommonModule } from '@angular/common';
 
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';  // Importa el RouterModule
+
 // External
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+  ],
   imports: [
-    AppRoutingModule,  // Agrega AppRoutingModule en los imports
+    AppRoutingModule,  
     CommonModule,
-    RouterModule,  // Asegúrate de agregarlo en los imports
+    RouterModule,  
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), AppRoutingModule, // ToastrModule added
   ],
