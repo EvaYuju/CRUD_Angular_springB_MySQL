@@ -1,17 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ToastrModule } from 'ngx-toastr';
 
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';  // Importa el RouterModule
-//import { AppComponent } from './app.component';
-
+// External
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
-  // declarations: [
-  //   AppComponent
-  // ],
+  declarations: [],
   imports: [
     AppRoutingModule,  // Agrega AppRoutingModule en los imports
     CommonModule,
