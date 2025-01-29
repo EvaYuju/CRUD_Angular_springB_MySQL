@@ -5,7 +5,9 @@
   "projects": {
     "crudFRONT": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {"@schematics/angular:class": {
+          "skipTests": true
+        }},
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
