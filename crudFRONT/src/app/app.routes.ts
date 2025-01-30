@@ -5,9 +5,7 @@ import { EditarProductoComponent } from './producto/editar-producto.component';
 import { NuevoProductoComponent } from './producto/nuevo-producto.component';
 
 export const routes: Routes = [
-    /* { path: '', redirectTo: '/home', pathMatch: 'full' } // Ejemplo - Redirige a la ruta 'home'
-       { path: 'home', component: SomeComponent } // Aquí debería estar tu componente */
-
+    /* { path: 'home', component: SomeComponent } // Aquí debería estar tu componente */
     // Vamos a definir las rutas de nuestra aplicación:
     {path: '', component: ListaProductoComponent}, // Ruta por defecto
     {path: 'detalle/:id', component: DetalleProductoComponent}, // Ruta para ver el detalle de un producto
