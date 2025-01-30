@@ -9,8 +9,8 @@ export const routes: Routes = [
     // Vamos a definir las rutas de nuestra aplicación:
     {path: '', component: ListaProductoComponent}, // Ruta por defecto
     {path: 'detalle/:id', component: DetalleProductoComponent}, // Ruta para ver el detalle de un producto
+    {path: 'nuevo', component: NuevoProductoComponent}, // Ruta para crear un nuevo producto
     {path: 'editar/:id', component: EditarProductoComponent}, // Ruta para editar un producto   
-    {path: 'nuevo', component: NuevoProductoComponent}, // Ruta para crear un nuevo producto,
     {path: '**', redirectTo: '', pathMatch: 'full'} // Ruta redirige si no se encuentra la ruta
 
 
