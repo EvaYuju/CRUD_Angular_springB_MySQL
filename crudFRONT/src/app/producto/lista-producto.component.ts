@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { Producto } from '../models/producto';
 import { ProductoService } from '../service/producto.service';
+import { CommonModule } from '@angular/common';  // Importa CommonModule
 
 
 @Component({
   selector: 'app-lista-producto',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './lista-producto.component.html',
   styleUrl: './lista-producto.component.css'
 })
