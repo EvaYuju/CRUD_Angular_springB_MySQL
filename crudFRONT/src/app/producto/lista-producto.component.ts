@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';  // Importa CommonModule
 })
 export class ListaProductoComponent {
 
-  // Creamos un array de productos
+  // Creamos un array de productos de tipo Producto
   productos: Producto[] = [];
 
   constructor(private productoService: ProductoService) {}
@@ -23,6 +23,7 @@ export class ListaProductoComponent {
   }
 
   cargarProductos(): void {
+    // Llamamos al método lista() de nuestro servicio
     this.productoService.lista().subscribe(
       data => {
         this.productos = data;
