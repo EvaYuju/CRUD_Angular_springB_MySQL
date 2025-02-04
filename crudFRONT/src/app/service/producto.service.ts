@@ -12,7 +12,7 @@ export class ProductoService {
    y mostrarlos en la pantalla del FrontEnd  */
 
   /* nuestra url -> ProductoController en el @RequestMapping la url es "/producto"*/
-  productoURL = 'http://localhost:8080/producto/';
+  private productoURL = 'http://localhost:8080/producto/';
 
   /* En el constructor vamos a inyectar el HttpClient pero como tengo provideHttpClient en el app.module no sería necesario */
   constructor(private httpClient: HttpClient) { }

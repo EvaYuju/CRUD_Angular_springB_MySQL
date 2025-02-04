@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';  // Importa el RouterModule
 
-import { provideHttpClient } from '@angular/common/http';
+import { HttpClientModule, provideHttpClient, HttpClient } from '@angular/common/http';
 import { withInterceptorsFromDi } from '@angular/common/http';
 
 import { FormsModule } from '@angular/forms';
@@ -21,13 +21,13 @@ import { ToastrModule } from 'ngx-toastr';
     CommonModule,
     RouterModule,  
     BrowserAnimationsModule, // required animations module
-    ToastrModule.forRoot(), AppRoutingModule, // ToastrModule added
+    ToastrModule.forRoot(),  // ToastrModule added
   ],
   providers: [
     provideHttpClient(withInterceptorsFromDi())
 
-  ]
- // bootstrap: []   Componente principal para arrancar la app
+  ],
+//bootstrap: [ AppComponent]    Componente principal para arrancar la app
 
 })
 export class AppModule { }
